@@ -101,15 +101,15 @@ int get_large_num(char *BigInt1, char *BigInt2, int digits_BigInt1, int digits_B
 char *max(char *BigInt1, char *BigInt2, const char *Name1, const char *Name2){
     int LargeNum = get_large_num(BigInt1, BigInt2, get_digits(BigInt1), get_digits(BigInt2));
     if(LargeNum==0){
-        printf("After max() check, two BigInts are equal!!\n");
+        // printf("After max() check, two BigInts are equal!!\n");
         return BigInt1; //兩數相等時，統一max()回傳BigInt1
     }
     else if(LargeNum==1){
-        printf("After max() check, Larger = %s\n", Name1);
+        // printf("After max() check, Larger = %s\n", Name1);
         return BigInt1;
     }
     else{
-        printf("After max() check, Larger = %s\n", Name2);
+        // printf("After max() check, Larger = %s\n", Name2);
         return BigInt2;
     }
 }
@@ -117,15 +117,15 @@ char *max(char *BigInt1, char *BigInt2, const char *Name1, const char *Name2){
 char *min(char *BigInt1, char *BigInt2, const char *Name1, const char *Name2){
     int LargeNum = get_large_num(BigInt1, BigInt2, get_digits(BigInt1), get_digits(BigInt2));
     if(LargeNum==0){
-        printf("After min() check, two BigInts are equal!!\n");
+        // printf("After min() check, two BigInts are equal!!\n");
         return BigInt2; //兩數相等時，統一min()回傳BigInt2
     }
     else if(LargeNum!=1){
-        printf("After min() check, Larger = %s\n", Name1);
+        // printf("After min() check, Larger = %s\n", Name1);
         return BigInt1;
     }
     else{
-        printf("After min() check, Larger = %s\n", Name2);
+        // printf("After min() check, Larger = %s\n", Name2);
         return BigInt2;
     }
 }
@@ -217,34 +217,34 @@ void multiply_2powK(char *BigInt, int digits_BigInt, char* coeff_2k){
     for(int i=0; i<(log2(_ans)); i++){
         multiply_2(BigInt, 0, digits_BigInt);
         digits_BigInt = NULL_correction(BigInt);
-        show_BigInt(BigInt, digits_BigInt, "BigInt", "After mutiply_2(), "); // ------------------- print BigInt
+        // show_BigInt(BigInt, digits_BigInt, "BigInt", "After mutiply_2(), "); // ------------------- print BigInt
     }
 }
 
 void Div_2(char *BigInt, int *digits_BigInt, const char *Name){
     divid_2(&BigInt[*digits_BigInt-1], 0, *digits_BigInt);
     *digits_BigInt = NULL_correction(BigInt);
-    show_BigInt(BigInt, *digits_BigInt, Name, "After __divid_2(_), "); // ------------------- print BigInt
+    // show_BigInt(BigInt, *digits_BigInt, Name, "After __divid_2(_), "); // ------------------- print BigInt
 }
 
 void Muti_2(char *BigInt, int *digits_BigInt, const char *Name){
     multiply_2(BigInt, 0, *digits_BigInt); //個位數沒有上一位，進位填0    
     *digits_BigInt = NULL_correction(BigInt);
-    show_BigInt(BigInt, *digits_BigInt, Name, "After mutiply_2(), "); // ------------------- print BigInt
+    // show_BigInt(BigInt, *digits_BigInt, Name, "After mutiply_2(), "); // ------------------- print BigInt
 }
 
 void M_Minus_N(char *m, char *n, int *digits_m, int *digits_n, const char *Name_m, const char *Name_n){
     M_minus_N(m, n, *digits_m);
     *digits_m = NULL_correction(m);
     *digits_n = NULL_correction(n);
-    show_BigInt(m, *digits_m, Name_m, "After M_minus_N(), "); // ------------------- print BigInt
-    show_BigInt(n, *digits_n, Name_n, "After M_minus_N(), "); // ------------------- print BigInt
+    // show_BigInt(m, *digits_m, Name_m, "After M_minus_N(), "); // ------------------- print BigInt
+    // show_BigInt(n, *digits_n, Name_n, "After M_minus_N(), "); // ------------------- print BigInt
 }
 
 void Muti_2PowK(char *BigInt, int *digits_BigInt, char *coeff_2k, const char *Name){
     multiply_2powK(BigInt, *digits_BigInt, coeff_2k);
     *digits_BigInt = NULL_correction(BigInt);
-    show_BigInt(BigInt, *digits_BigInt, Name, "After multiply_2powK(), "); // ------------------- print BigInt
+    // show_BigInt(BigInt, *digits_BigInt, Name, "After multiply_2powK(), "); // ------------------- print BigInt
 }
 
 int main(){
@@ -261,16 +261,16 @@ int main(){
     seperate_two_int(strarry, BigInt1, BigInt2);
     int digits_BigInt1 = get_digits(BigInt1);
     int digits_BigInt2 = get_digits(BigInt2);
-    show_BigInt(BigInt1, digits_BigInt1, "BigInt1", "User input, "); // ------------------- print BigInt
-    show_BigInt(BigInt2, digits_BigInt2, "BigInt2", "User input, "); // ------------------- print BigInt
-    printf("\n");
+    // show_BigInt(BigInt1, digits_BigInt1, "BigInt1", "User input, "); // ------------------- print BigInt
+    // show_BigInt(BigInt2, digits_BigInt2, "BigInt2", "User input, "); // ------------------- print BigInt
+    // printf("\n");
 
     //### Change LSB <-> HSB.
     orderSWAP(BigInt1, digits_BigInt1);    
     orderSWAP(BigInt2, digits_BigInt2);
-    show_BigInt(BigInt1, digits_BigInt1, "BigInt1", "After orderSWAP(), "); // ------------------- print BigInt
-    show_BigInt(BigInt2, digits_BigInt2, "BigInt2", "After orderSWAP(), "); // ------------------- print BigInt
-    printf("\n");
+    // show_BigInt(BigInt1, digits_BigInt1, "BigInt1", "After orderSWAP(), "); // ------------------- print BigInt
+    // show_BigInt(BigInt2, digits_BigInt2, "BigInt2", "After orderSWAP(), "); // ------------------- print BigInt
+    // printf("\n");
 
     //### n ← min(a, b), m ← max(a, b), ans ← 1.
     char *m = max(BigInt1, BigInt2, "BigInt1", "BigInt2");
@@ -280,23 +280,23 @@ int main(){
     int digits_n = get_digits(n);
     int digits_ans = get_digits(ans);
     // printf("ptr_BigInt1= %p, ptr_BigInt2= %p\nptr_m= %p, ptr_n= %p\n\n",&BigInt1, &BigInt2, m, n);
-    printf("\n");
-    show_BigInt(m, digits_m, "m", "init, "); // ------------------- print BigInt
-    show_BigInt(n, digits_n, "n", "init, "); // ------------------- print BigInt
-    show_BigInt(ans, digits_ans, "ans", "init, "); // ------------------- print BigInt
-    getchar(); // ------------------- wait
-    system("clear"); // ------------------- clear
+    // printf("\n");
+    // show_BigInt(m, digits_m, "m", "init, "); // ------------------- print BigInt
+    // show_BigInt(n, digits_n, "n", "init, "); // ------------------- print BigInt
+    // show_BigInt(ans, digits_ans, "ans", "init, "); // ------------------- print BigInt
+    // getchar(); // ------------------- wait
+    // system("clear"); // ------------------- clear
 
     //### st. while loop
     int loop_count = 1;
     while(not_zero(n)&&not_zero(m)){
-        printf("loop = %d ==>\n", loop_count); // ------------------- print #th loop
-        printf("\nnot_zero(m), not_zero(n)\n"); // ------------------- print status
-        show_BigInt(m, digits_m, "m", " -> "); // ------------------- print BigInt
-        show_BigInt(n, digits_n, "n", " -> "); // ------------------- print BigInt
-        show_BigInt(ans, digits_ans, "ans", " -> "); // ------------------- print BigInt
+        // printf("loop = %d ==>\n", loop_count); // ------------------- print #th loop
+        // printf("\nnot_zero(m), not_zero(n)\n"); // ------------------- print status
+        // show_BigInt(m, digits_m, "m", " -> "); // ------------------- print BigInt
+        // show_BigInt(n, digits_n, "n", " -> "); // ------------------- print BigInt
+        // show_BigInt(ans, digits_ans, "ans", " -> "); // ------------------- print BigInt
         if(is_even(n)&&is_even(m)){
-            printf("n, m is even\n"); // ------------------- print status
+            // printf("n, m is even\n"); // ------------------- print status
             
             //### ans ← ans × 2
             Muti_2(ans, &digits_ans, "ans");
@@ -306,57 +306,56 @@ int main(){
             
             //### n ← n/2
             Div_2(n, &digits_n, "n");
-            printf("\n"); // ------------------- print new lines to align
+            // printf("\n"); // ------------------- print new lines to align
         }
         else if(is_even(n)){
-            printf("only n is even\n"); // ------------------- print status
+            // printf("only n is even\n"); // ------------------- print status
             
             //### n ← n/2
             Div_2(n, &digits_n, "n");
-            show_BigInt(m, digits_m, "m", "After __divid_2(n), "); // ------------------- print BigInt
-            printf("\n\n"); // ------------------- print new lines to align
+            // show_BigInt(m, digits_m, "m", "After __divid_2(n), "); // ------------------- print BigInt
+            // printf("\n\n"); // ------------------- print new lines to align
         }
         else if(is_even(m)){
-            printf("only m is even\n"); // ------------------- print status
+            // printf("only m is even\n"); // ------------------- print status
             
             //### m ← m/2
             Div_2(m, &digits_m, "m");
-            show_BigInt(n, digits_n, "n", "After __divid_2(m), "); // ------------------- print BigInt
-            printf("\n\n"); // ------------------- print new lines to align
+            // show_BigInt(n, digits_n, "n", "After __divid_2(m), "); // ------------------- print BigInt
+            // printf("\n\n"); // ------------------- print new lines to align
         }
         else{
-            printf("n, m is NOT even\n\n\n\n\n"); // ------------------- print status
+            // printf("n, m is NOT even\n\n\n\n\n"); // ------------------- print status
         }
         if(max(n,m,"n","m")!=m){
 
             //### swap(n,m)
-            printf("Need to SWAP n, m\n"); // ------------------- print status
+            // printf("Need to SWAP n, m\n"); // ------------------- print status
             char *tmp = m;
             m = n;
             n = tmp;
         }
         else{
-            printf("DON'T need to SWAP n, m\n"); // ------------------- print status
+            // printf("DON'T need to SWAP n, m\n"); // ------------------- print status
         }
         digits_m = NULL_correction(m);
         digits_n = NULL_correction(n);
-        show_BigInt(m, digits_m, "m", "After __SWAP_NM(), "); // ------------------- print BigInt
-        show_BigInt(n, digits_n, "n", "After __SWAP_NM(), "); // ------------------- print BigInt
-        printf("\n"); // ------------------- print new lines to align
+        // show_BigInt(m, digits_m, "m", "After __SWAP_NM(), "); // ------------------- print BigInt
+        // show_BigInt(n, digits_n, "n", "After __SWAP_NM(), "); // ------------------- print BigInt
+        // printf("\n"); // ------------------- print new lines to align
         
         //### m ← (m − n)
         M_Minus_N(m, n, &digits_m, &digits_n, "m", "n");
         loop_count++;
-        getchar(); // ------------------- wait
-        system("clear"); // ------------------- clear
+        // getchar(); // ------------------- wait
+        // system("clear"); // ------------------- clear
     }
 
     Muti_2PowK(n, &digits_n, ans, "n");
 
-    orderSWAP(n, digits_n);
-    show_BigInt(n, digits_n, "Ans", "Binary Algorithm for Greatest Common Divisor => "); // ------------------- print BigInt
-
     //### output
+    orderSWAP(n, digits_n);
+    // show_BigInt(n, digits_n, "Ans", "Binary Algorithm for Greatest Common Divisor => "); // ------------------- print BigInt
     for(int i=0; i<256; i++){
         if(n[i]=='\0'){
             printf("\n");
@@ -364,8 +363,7 @@ int main(){
         }
         printf("%c", n[i]);
     }
-
-    printf("\n=> total loop = %d\n", loop_count); // ------------------- print total loop
+    // printf("\n=> total loop = %d\n", loop_count); // ------------------- print total loop
     
     return 0;
 
